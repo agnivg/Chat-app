@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgba(0,0,0,0.8)
+}
+h1{
+    color: red;
+    text-align: center;
+}
+h2{
+    color: blue;
+    text-align: center;
+}
+.form-field{
+    background-color: white;
+    margin: 10vh 25vw;
+    padding: 1vw;
+    width: 50vw;
+}
+.form-body{
+    margin: 10% 10%;
+    background-color: rgba(0,0,0,0.2);
+    padding: 5%;
+}
+#name{
+    display: block;
+    background-color: yellow;
+    text-align: center;
+    height: 5vh;
+    width: 100%;
+}
+#room{
+    display: block;
+    background-color: yellow;
+    text-align: center;
+    height: 5vh;
+    width: 100%;
+}
+#email{
+    display: block;
+    background-color: yellow;
+    text-align: center;
+    height: 5vh;
+    width: 100%;
+}
+h4{
+    text-align: center;
+    color: tomato;
+}
+.btn{
+    margin: 5% 37%;
+    height: 4vh;
+    width: 26%;
+    background-color: green;
+}

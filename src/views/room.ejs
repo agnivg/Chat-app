@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat room</title>
+    <link rel="stylesheet" href="../../room.css">
+</head>
+<body>
+    <div class="heading">
+        <h1>This is room <%=room%></h1>
+    </div>
+    <div class="big">
+        <div class="left">
+            <h2>Participants</h2>
+            <div class="users"></div>
+        </div>
+        <div class="right">
+            <div class="message" style="margin-left: 20px;"></div>
+            <div class="footer">
+                <input type="text" class="text" placeholder="Type your message here"></textarea>
+                <button class="btn1">Send</button>
+                <button class="btn2">Send Location</button>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="../../index.js"></script>
+    <script type="text/javascript" src="../../mustache.js"></script>
+    <script id="message-template" type="text/template">
+            <div>
+                <h4 style="color:red;">{{from}} <span style="color:white; font-size: 0.8rem">{{createdAt}}</span></h4>
+            </div>
+            <div>
+                <p style="color:white;">{{text}}</p>
+                <br>
+            </div>
+    </script>
+    <script id="location-message-template" type="text/template">
+        <div>
+            <h4 style="color:red;">{{from}} <span style="color:white; font-size: 0.8rem">{{createdAt}}</span></h4>
+        </div>
+        <div>
+            <a href="{{url}}" target="_blank" style="color:white;">View Location</a>
+            <br><br>
+        </div>
+</script>
+</body>
+</html>
