@@ -34,7 +34,7 @@ socket.on('newMessage',function(message){
             createdAt: message.createdAt
         });
         div.innerHTML=html;
-        div.style.cssText="background-color:rgba(0,0,0,0.8);width:50%;margin:5px 0;padding:10px;";
+        div.style.cssText="background-color:rgba(0,0,0,0.8);margin:5px 40% 5px 20px;padding:10px;";
     }
     const mess=document.querySelector('.message');
     mess.appendChild(div);
@@ -61,7 +61,7 @@ socket.on('newLocationMessage',function(message){
             createdAt: message.createdAt
         });
         div.innerHTML=html;
-        div.style.cssText="background-color:rgba(0,0,0,0.8);width:50%;margin:5px 0;padding:10px;";
+        div.style.cssText="background-color:rgba(0,0,0,0.8);margin:5px 40% 5px 20px;padding:10px;";
     }
     const mess=document.querySelector('.message');
     mess.appendChild(div);
@@ -75,6 +75,7 @@ socket.on('updateUsersList',function(users){
     users.forEach(function(user){
         let li=document.createElement('li');
         li.innerHTML=user;
+        li.style.cssText="font-weight:bold;font-size:1.2rem;color:brown;margin-top:2px"
         ol.appendChild(li);
     })
     let List=document.querySelector('.users');
