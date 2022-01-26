@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat room</title>
     <link rel="stylesheet" href="../../room.css">
+    <script src="https://kit.fontawesome.com/556195b5f6.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="heading">
@@ -19,9 +20,14 @@
         <div class="right">
             <div class="message"></div>
             <div class="footer">
-                <input type="text" class="text" placeholder="Type your message here"></textarea>
+                <input type="text" class="text" placeholder="Type your message here">
                 <button class="btn1">Send</button>
                 <button class="btn2">Send Location</button>
+                <button class="btn3"><i class="fas fa-image"></i></button>   
+                <div class="imagediv" style="display:none;margin-bottom: 5px;">
+                    <input type="file" accept=".png,.jpeg,.jpg" class="imagefile">
+                    <button class="btn4">Send Image</button>
+                </div>                            
             </div>
         </div>
     </div>
@@ -45,6 +51,15 @@
             <a href="{{url}}" target="_blank" style="color:white;">View Location</a>
             <br><br>
         </div>
-</script>
+    </script>
+    <script id="image-message-template" type="text/template">
+        <div>
+            <h4 style="color:red;">{{from}} <span style="color:white; font-size: 0.8rem">{{createdAt}}</span></h4>
+        </div>
+        <div>
+            <img src="{{url}}" style="max-height:100%;width:100%"/>
+            <br><br>
+        </div>
+    </script>
 </body>
 </html>

@@ -67,6 +67,17 @@ let io=socketIO(server);
                 })
             }        
         })
+        socket.on('createImageMessage',(message)=>{
+            let user=users.getUser(socket.id);
+            if(user){
+                io.to(user.room).emit('newImageMessage',{
+                    from: user.name,
+                    email: user.email,
+                    url: message.url,
+                    createdAt: new Date().toLocaleTimeString()
+                })
+            }        
+        })
         socket.on('disconnect',()=>{
             let user=users.removeUser(socket.id);
             if(user){
