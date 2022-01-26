@@ -161,4 +161,5 @@ document.querySelector('.btn4').addEventListener('click',function(e){
         };
         reader.onerror = error => alert(error);
     })  
+    document.querySelector('.imagefile').value = "";
 })
