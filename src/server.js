@@ -11,8 +11,7 @@ app.set('views',(path.join(__dirname,'views')));
 app.use(express.static(publicpath));
 let server=http.createServer(app);
 const mongoose=require('mongoose')
-const MONGODB_URI='mongodb+srv://adminuser:useradmin@charitydb.fivwx.mongodb.net/ChatApp?retryWrites=true&w=majority'
-mongoose.connect(process.env.MONGODB_URI||MONGODB_URI,{
+mongoose.connect(process.env.MONGODB_URI,{
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(()=>console.log("Connection successful")).catch((err)=>{
