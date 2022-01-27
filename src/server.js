@@ -10,7 +10,10 @@ app.set("view engine","ejs");
 app.set('views',(path.join(__dirname,'views')));
 app.use(express.static(publicpath));
 let server=http.createServer(app);
-const mongoose=require('mongoose')
+const mongoose=require('mongoose');
+app.use(express.json())
+app.use(express.urlencoded({extended:false}))
+
 mongoose.connect(process.env.MONGODB_URI,{
     useNewUrlParser:true,
     useUnifiedTopology:true
@@ -32,19 +35,67 @@ const ChatSchema=new mongoose.Schema({
         default:false
     }
 });
+const RoomSchema=new mongoose.Schema({
+    room:String,
+});
 const Chat=new mongoose.model("Chat",ChatSchema);
+const Room=new mongoose.model("Room",RoomSchema);
 function isValid(str){
     return str.trim().length > 0
 }
 app.get("/",(req,res)=>{
-    res.render('index');
+    res.render('home',{
+        err:""
+    });
 })
-app.get("/room",(req,res)=>{
-    const name=req.query.name;
+app.post("/credentials",async (req,res)=>{
+    try{
+        const rm=await Room.find({room:req.body.room});
+        if(rm.length!=0){
+            res.render("home",{
+                err:"Room already exists"
+            })
+        }
+        else{
+            try{
+                const rom=new Room({
+                    room: req.body.room
+                })
+                const reg=await rom.save();
+                res.redirect('/enterroom')
+            }
+            catch(err){
+                console.log(err);
+            }
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
+})
+app.get("/enterroom",(req,res)=>{    
+    res.render('index',{
+        err:""
+    });
+})
+app.get("/room",async (req,res)=>{
     const room=req.query.room;
-    res.render("room",{
-        room:room
-    })
+    try{
+        const rm=await Room.find({room:room});
+        if(rm.length!=0){
+            res.render("room",{
+                room:room
+            })
+        }
+        else{
+            res.render('index',{
+                err:"Room Does not Exist"
+            })
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
 })
 let io=socketIO(server);
     io.on('connection',(socket)=>{
@@ -120,7 +171,6 @@ let io=socketIO(server);
                         room: user.room
                     })
                     const reg=await chat.save();
-                    res.status(200).send(reg);
                 }
                 catch(err){
                     console.log(err);
@@ -147,7 +197,6 @@ let io=socketIO(server);
                         isLocation: true
                     })
                     const reg=await chat.save();
-                    res.status(200).send(reg);
                 }
                 catch(err){
                     console.log(err);
@@ -174,7 +223,6 @@ let io=socketIO(server);
                         isImage: true
                     })
                     const reg=await chat.save();
-                    res.status(200).send(reg);
                 }
                 catch(err){
                     console.log(err);
