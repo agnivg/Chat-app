@@ -49,9 +49,27 @@ h4{
     text-align: center;
     color: tomato;
 }
-.btn{
-    margin: 5% 37%;
-    height: 4vh;
-    width: 26%;
-    background-color: green;
+@media only screen and (min-width:1279px){
+    .btn{
+        margin: 5% 37%;
+        height: 4vh;
+        width: 26%;
+        background-color: green;
+    }
+    a{
+        text-decoration: none; 
+        margin:0% 41%;
+    }
+}
+@media only screen and (max-width:1278px){
+    .btn{
+        margin: 5% 30%;
+        height: 4vh;
+        width: 40%;
+        background-color: green;
+    }
+    a{
+        text-decoration: none; 
+        margin:0% 17.6%;
+    }
 }
