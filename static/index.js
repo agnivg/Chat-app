@@ -133,10 +133,15 @@ document.querySelector('.btn2').addEventListener('click',function(e){
 document.querySelector('.btn3').addEventListener('click',function(e){
     e.preventDefault();
     const x=document.querySelector('.imagediv')
-    if(x.style.display==="none") 
-        x.style.display="block"
-    else
+    const y=document.querySelector('.textdiv')
+    if(x.style.display==="none"){
+        x.style.display="inline"
+        y.style.display="none"
+    }
+    else{
         x.style.display="none"
+        y.style.display="inline"
+    }
 })
 document.querySelector('.btn4').addEventListener('click',function(e){
     e.preventDefault();
