@@ -1,3 +1,4 @@
+import {IMAGE_KEY} from './key.js'
 let socket=io();
 function scrollToBottom(){
     let mess=document.querySelector('.message').lastElementChild;
@@ -154,7 +155,7 @@ document.querySelector('.btn4').addEventListener('click',function(e){
         reader.onload = async () => {
             const form = new FormData();
             form.append("image", file)
-            const response = await fetch("https://api.imgbb.com/1/upload?key=f1e92523c7def8bc8c1bb40828557766", {
+            const response = await fetch(IMAGE_KEY, {
                 body: form,
                 method: "POST"
             })
