@@ -154,7 +154,7 @@ document.querySelector('.btn4').addEventListener('click',function(e){
         reader.onload = async () => {
             const form = new FormData();
             form.append("image", file)
-            const response = await fetch(process.env.IMAGE_KEY, {
+            const response = await fetch("https://api.imgbb.com/1/upload?key=b25be8be2dd8588068d161a073d36cdd", {
                 body: form,
                 method: "POST"
             })
