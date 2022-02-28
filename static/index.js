@@ -1,4 +1,3 @@
-import {IMAGE_KEY} from './key.js'
 let socket=io();
 function scrollToBottom(){
     let mess=document.querySelector('.message').lastElementChild;
@@ -155,7 +154,7 @@ document.querySelector('.btn4').addEventListener('click',function(e){
         reader.onload = async () => {
             const form = new FormData();
             form.append("image", file)
-            const response = await fetch(IMAGE_KEY, {
+            const response = await fetch(process.env.IMAGE_KEY, {
                 body: form,
                 method: "POST"
             })
