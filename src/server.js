@@ -14,8 +14,7 @@ const mongoose=require('mongoose');
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
-const MONGODB_URI="mongodb+srv://adminuser:useradmin@charitydb.fivwx.mongodb.net/ChatApp?retryWrites=true&w=majority"
-mongoose.connect(MONGODB_URI||process.env.MONGODB_URI,{
+mongoose.connect(process.env.MONGODB_URI,{
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(()=>console.log("Connection successful")).catch((err)=>{
